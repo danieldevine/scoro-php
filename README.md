@@ -25,7 +25,7 @@ $scoro = new ScoroPhp(
 
 ```
 
-The library provides a fluent interface, allopwing you to build your query with method chaining.
+The library provides a fluent interface, allowing you to build your query with method chaining.
 
 ```php
 
@@ -71,6 +71,33 @@ $scoro->module('contacts')
 
 ```
 
+Use the `paginate()` method to set page and per page values.
+
+```php
+$scoro->module('contacts')
+    ->action('list')
+    ->paginate(10, 2)
+    ->call();
+
+```
+
+### Method Reference
+
+All methods are optional bar module which must always be specified. In practice, this applies to action too in the vast majority of cases. End with `call()` to make the request.
+
+Method | Accepts  | Type
+---------|----------|--------
+ `module($module)` | The targeted module name | String
+ `action($action)` | One of: list, view, modify, delete | String
+ `id($id)` | The id of the object you want to target, if available based on the module and action | Int
+`filter($filters)` | [Filters](https://api.scoro.com/api/v2#filters) you wish to apply | Array
+`request($requests)` | Items to specify in the request, varies from module to module | Array
+`paginate($per_page, $page)` | Number of records per page (default 10, capped at 100) and page of results to retrieve|Int, Int
+`lang($lang)` | Defaults to 'eng' | String
+`call()` | Makes the request.
+
+#### Utility Method
+
 You can use the utility method if you don't like method chaining for some reason. Just pass the arguments directly in the correct order. See the inline documentation for more.
 
 ```php
@@ -105,7 +132,6 @@ Argument | Description | Required | Type
  `action` | what to do with the selected object, see the [Scoro API reference](https://api.scoro.com/api/v2) each module for a list of available action | optional | string
  `id` | the id of the object you want to target, if available based on the module and action | optional | string
  `filter` | [See Reference](https://api.scoro.com/api/v2#filters) | optional | array
-
 
 
 ### Reference
