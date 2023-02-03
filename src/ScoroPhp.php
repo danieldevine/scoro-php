@@ -97,56 +97,6 @@ class ScoroPhp
         $this->api_key = $api_key;
     }
 
-    /**
-     * Utility method, make a request without method chaining.
-     *
-     * https://api.scoro.com/api/v2#apiCalls
-     *
-     * @param string $module
-     * @param string $action
-     * @param string $id
-     * @param string $per_page
-     * @param integer $page
-     * @param array $request
-     * @param array $filter
-     */
-    public function callWithArguments(
-        $module,
-        $action = '',
-        $id = '',
-        $per_page = '10',
-        $page = 1,
-        $request = null,
-        $filter = null,
-    ) {
-
-        $base_uri = "https://{$this->company_account_id}.scoro.com/api/v2/";
-
-        $endpoint = implode("/", array_filter(
-            [$module, $action, $id]
-        ));
-
-        $client = new Client([
-            'base_uri' => $base_uri,
-        ]);
-
-        try {
-            $response = $client->request('POST', $endpoint, [
-                'json' => [
-                    'apiKey'             => $this->api_key,
-                    'company_account_id' => $this->company_account_id,
-                    'per_page'           => $per_page,
-                    'page'               => $page,
-                    'request'            => $request,
-                    'filter'             => $filter,
-                ]
-            ]);
-
-            return json_decode($response->getBody());
-        } catch (ClientException | ServerException $e) {
-            throw $e;
-        }
-    }
 
     /**
      * Set the module to request
@@ -257,6 +207,11 @@ class ScoroPhp
     }
 
 
+    /**
+     * Perform the request
+     *
+     * @return object | exception
+     */
     public function call()
     {
 
