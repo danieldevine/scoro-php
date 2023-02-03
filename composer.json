@@ -1,0 +1,26 @@
+{
+    "name": "coderjerk/scoro-php",
+    "description": "Scoro API Client",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Coderjerk\\ScoroPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dan Devine",
+            "email": "dandevine0@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0",
+        "guzzlehttp/oauth-subscriber": "^0.6.0"
+    },
+    "require-dev": {
+        "vlucas/phpdotenv": "^5.2",
+        "symfony/var-dumper": "^5.1",
+        "phpunit/phpunit": "^9.5"
+    }
+}
