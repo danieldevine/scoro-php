@@ -126,14 +126,6 @@ foreach ($contacts->data as $contact) {
 ```
 
 
-Argument | Description | Required | Type
----------|----------|---------|----------
- `$module` | the module accessed, for example 'contacts' | required | string
- `action` | what to do with the selected object, see the [Scoro API reference](https://api.scoro.com/api/v2) each module for a list of available action | optional | string
- `id` | the id of the object you want to target, if available based on the module and action | optional | string
- `filter` | [See Reference](https://api.scoro.com/api/v2#filters) | optional | array
-
-
 ### Reference
 
 Obviously you'll need a Scoro account to use the API. Read their API Reference for information about restrictions and rate limiting, and details of available endpoints.
