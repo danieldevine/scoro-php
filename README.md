@@ -10,7 +10,7 @@ Install with composer.
 composer require coderjerk/scoro-php
  ```
 
-### Example
+### Examples
 
 Instantiate the class
 ```php
@@ -25,7 +25,7 @@ $scoro = new ScoroPhp(
 
 ```
 
-The library provides a fluent interface, allowing you to build your query with method chaining.
+The library provides a fluent interface, allowing you to build your query with method chaining
 
 ```php
 
@@ -61,7 +61,7 @@ $scoro->module('contacts')
 
 ```
 
-Use the `id()` method to target a single entity.
+Use the `id()` method to target a single entity
 
 ```php
 $scoro->module('contacts')
@@ -71,7 +71,7 @@ $scoro->module('contacts')
 
 ```
 
-Use the `paginate()` method to set page and per page values.
+Use the `paginate()` method to set page and per page values
 
 ```php
 $scoro->module('contacts')
@@ -95,35 +95,6 @@ Method | Accepts  | Type
 `paginate($per_page, $page)` | Number of records per page (default 10, capped at 100) and page of results to retrieve|Int, Int
 `lang($lang)` | Defaults to 'eng' | String
 `call()` | Makes the request.
-
-#### Utility Method
-
-You can use the utility method if you don't like method chaining for some reason. Just pass the arguments directly in the correct order. See the inline documentation for more.
-
-```php
-
-use Coderjerk\ScoroPhp\ScoroPhp;
-
-//add your company account id and api key, which you've stored safely in your env, for example.
-$scoro = new ScoroPhp(
-    $_ENV['SCORO_COMPANY_ACCOUNT_ID'],
-    $_ENV['SCORO_API_KEY'],
-);
-
-// not the recommended way but you do you.
-
-$contacts = $scoro->callWithArguments(
-    'contacts', // the 'module' you want to hit
-    'list' // the 'action'
-);
-
-// if you're sucessful you'll get an object in response.
-// The good stuff is found in 'data'.
-foreach ($contacts->data as $contact) {
-    echo "<li>{$contact->name}</li>";
-}
-
-```
 
 
 ### Reference
